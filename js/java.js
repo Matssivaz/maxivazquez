@@ -13,13 +13,72 @@ return alert ("Bienvenido " + ingresarNombre);
 }
 saludoInicial()
 
-const productos = [
-    { nombre: 'Perfume', precio: 5000 },
-    { nombre: 'Crema', precio: 3000 },
-    { nombre: 'Maquillaje', precio: 3500 }
-];
+const shopContent = document.getElementById("shopContent");
+
+const productos  = [
+    {
+    id: 1,
+    nombre: "Perfume",
+    precio: 20000,
+    img:"https://i.pinimg.com/564x/2c/68/bf/2c68bfb9638c2e9e94cf092e5736d4c5.jpg",
+
+},
+{
+    id: 2,
+    nombre: "Crema",
+    precio: 5000,
+    img:"https://i.pinimg.com/564x/ba/57/06/ba5706b016254a126a235ccbd2d7e0be.jpg",
+
+},
+{
+    id: 3,
+    nombre: "Jabones",
+    precio: 4500,
+    img:"https://i.pinimg.com/564x/da/05/0f/da050fcf79b954add779a26e7ef9f8ef.jpg",
+
+},
+{
+    id: 4,
+    nombre: "Labial",
+    precio: 8000,
+    img:"https://i.pinimg.com/564x/38/ce/f3/38cef379c16e595c14bebd79bddbe4f4.jpg",
+
+},
+
+]
+let carrito = [];
+productos.forEach((productos)=>{
+    let content = document.createElement("div");
+    content.innerHTML =`
+    <img src="${productos.img}">
+    <h3>${productos.nombre}</h3>
+    <p>${productos.precio}$</p>
+    `;
+    shopContent.appendChild(content);
+
+    let comprar = document.createElement("button");
+    comprar.innerText= "comprar";
+
+    content.append(comprar);
+})
+;
 function carritoCompra() {
     let carrito = {};
+    productos.forEach((product)=>{
+        let content = document.createElement("div");
+        content.innerHTML =`
+        <img src="${product.img}">
+        <h3>${product.nombre}</h3>
+        <p>${product.precio}$</p>
+        `;
+        shopContent.appendChild(content);
+    
+        let comprar = document.createElement("button");
+        comprar.innerText= "comprar";
+    
+        content.append(comprar);
+    })
+    ;
     let total = 0;
 
     while (true) {
@@ -28,6 +87,7 @@ function carritoCompra() {
   1. ${productos[0].nombre}: $${productos[0].precio.toFixed(2)}
   2. ${productos[1].nombre}: $${productos[1].precio.toFixed(2)}
   3. ${productos[2].nombre}: $${productos[2].precio.toFixed(2)}
+  4. ${productos[3].nombre}: $${productos[3].precio.toFixed(2)}
   
   Ingrese el número del producto que desea comprar (o escriba "fin" para salir):`);
 
